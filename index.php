@@ -75,7 +75,7 @@ foreach ($events as $event) {
    break;
     }
   }
-}
+
 // 候補が存在する場合
    if(count($suggestArray) > 0) {
      // アクションの配列
@@ -101,6 +101,8 @@ foreach ($events as $event) {
  }
 
  replyTextMessage($bot, $event->getReplyToken(), $location . 'の住所IDは' . $locationId . "です。");
+
+ }
  
 
 // テキストを返信。引数はLINEBot、返信先、テキスト
