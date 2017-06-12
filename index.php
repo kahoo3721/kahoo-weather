@@ -37,7 +37,7 @@ foreach ($events as $event) {
     continue;
   }
   // 入力されたテキスト取得
-  $bot-> replyText($event->getReplyToken(), $event->getText());
+  $bot->replyText($event->getReplyToken(), $event->getText());
 
 }
 
