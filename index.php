@@ -38,7 +38,8 @@ foreach ($events as $event) {
   }
   // 入力されたテキスト取得
   $bot-> replyText($event->getReplyToken(), $event->getText());
-  
+
+}
 
 // テキストを返信。引数はLINEBot、返信先、テキスト
 function replyTextMessage($bot, $replyToken, $text) {
