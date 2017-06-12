@@ -53,27 +53,27 @@ foreach ($crawler->filter('channel ldWeather|source pref city') as $city) {
   }
 }
 // 一致するものが無ければ
-if(empty($locationId)) {
-  // 位置情報が送られた時は県名を取得済みなのでそれを代入
-  if ($event instanceof \LINE\LINEBot\Event\MessageEvent\LocationMessage) {
-    $location = $prefName;
-  }
-  // 候補の配列
-  $suggestArray = array();
-  // 県名を抽出しユーザーが入力した県名と比較
-  foreach ($crawler->filter('channel ldWeather|source pref') as $pref) {
-    // 一致すれば
-    if(strpos($pref->getAttribute('title'), $location) !== false) {
-      // その県に属する市を配列に追加
-      foreach($pref->childNodes as $child) {
-        if($child instanceof DOMElement && $child->nodeName == 'city') {
-          array_push($suggestArray, $child->getAttribute('title'));
-        }
-      }
-      break;
+  if(empty($locationId)) {
+    // 位置情報が送られた時は県名を取得済みなのでそれを代入
+    if ($event instanceof \LINE\LINEBot\Event\MessageEvent\LocationMessage) {
+      $location = $prefName;
     }
-  }
-  // 候補が存在する場合
+    // 候補の配列
+    $suggestArray = array();
+    // 県名を抽出しユーザーが入力した県名と比較
+    foreach ($crawler->filter('channel ldWeather|source pref') as $pref) {
+      // 一致すれば
+      if(strpos($pref->getAttribute('title'), $location) !== false) {
+        // その県に属する市を配列に追加
+        foreach($pref->childNodes as $child) {
+          if($child instanceof DOMElement && $child->nodeName == 'city') {
+            array_push($suggestArray, $child->getAttribute('title'));
+          }
+        }
+        break;
+      }
+    }
+    // 候補が存在する場合
   if(count($suggestArray) > 0) {
     // アクションの配列
     $actionArray = array();
@@ -95,8 +95,9 @@ if(empty($locationId)) {
   }
   // 以降の処理はスキップ
   continue;
-}
-}
+  }
+  replyTextMessage($bot, $event->getReplyToken(), $location . 'の住所IDは' . $locationId . "です。");
+  }
 
 // テキストを返信。引数はLINEBot、返信先、テキスト
 function replyTextMessage($bot, $replyToken, $text) {
