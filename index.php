@@ -31,13 +31,19 @@ foreach ($events as $event) {
     error_log('Non message event has come');
     continue;
   }
-  // TextMessageクラスのインスタンスでなければ処理をスキップ
-  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
-    error_log('Non text message has come');
-    continue;
-  }
+
   // 入力されたテキスト取得
-  $location = $event->getText();
+  if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage) {
+    $location = $event->getText();
+  }
+  // LocationMessageクラスのインスタンスの場合
+  else if ($event instanceof \LINE\LINEBot\Event\MessageEvent\LocationMessage) {
+     replyTextMessage($bot, $event->getReplyToken(), $event->getAddress() .
+     '[' . $event->getLatitude() / ',' .
+     $event->getLatitude() . ']');
+  continue;
+}
+    
   // 住所ID用変数
 $locationId;
 // XMLファイルをパースするクラス
