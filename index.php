@@ -67,7 +67,7 @@ foreach ($events as $event) {
           break;
         }
       }
-    } 
+    }
 }
 
   // 住所ID用変数
