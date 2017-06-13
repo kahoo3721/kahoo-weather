@@ -145,6 +145,8 @@ foreach ($events as $event) {
         '最終更新：' . sprintf('%s月%s日%s時%s分', $date['month'], $date['day'], $date['hour'], $date['minute'])));
         replyImageMessage($bot, $event->getReplyToken(), 'http://' .
                     $_SERVER['HTTP_HOST'] .
+                    '/imgs/pmpm-sunny.jpg-large',
+                    'http://' . $_SERVER['HTTP_HOST'] .
                     '/imgs/pmpm-sunny.jpg-large');
 
   // 雨の場合
@@ -155,6 +157,8 @@ foreach ($events as $event) {
         '最終更新：' . sprintf('%s月%s日%s時%s分', $date['month'], $date['day'], $date['hour'], $date['minute'])));
     replyImageMessage($bot, $event->getReplyToken(), 'http://' .
                 $_SERVER['HTTP_HOST'] .
+                '/imgs/pmpm-rain.jpg-large',
+                'http://' . $_SERVER['HTTP_HOST'] .
                 '/imgs/pmpm-rain.jpg-large');
 
   // 他
@@ -164,6 +168,8 @@ foreach ($events as $event) {
       '最終更新：' . sprintf('%s月%s日%s時%s分', $date['month'], $date['day'], $date['hour'], $date['minute']));
       replyImageMessage($bot, $event->getReplyToken(), 'http://' .
                   $_SERVER['HTTP_HOST'] .
+                  '/imgs/pmpm-other.jpg-large',
+                  'http://' . $_SERVER['HTTP_HOST'] .
                   '/imgs/pmpm-other.jpg-large');
   }
 }
