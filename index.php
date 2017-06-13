@@ -143,10 +143,10 @@ foreach ($events as $event) {
     replyMultiMessage($bot, $event->getReplyToken(),
       new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($json['description']['text'] . PHP_EOL . PHP_EOL .
         '最終更新：' . sprintf('%s月%s日%s時%s分', $date['month'], $date['day'], $date['hour'], $date['minute'])),
-      new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('http://' .
+      new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://' .
                 $_SERVER['HTTP_HOST'] .
                 '/imgs/pmpm-sunny.jpg',
-                'http://' . $_SERVER['HTTP_HOST'] .
+                'https://' . $_SERVER['HTTP_HOST'] .
                 '/imgs/pmpm-sunny-pr.jpg'));
   // 雨の場合
   } else if($json['forecasts'][0]['telop'] == '雨') {
@@ -154,10 +154,10 @@ foreach ($events as $event) {
       // 天気情報、更新時刻、雨のスタンプをまとめて送信
       new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($json['description']['text'] . PHP_EOL . PHP_EOL .
         '最終更新：' . sprintf('%s月%s日%s時%s分', $date['month'], $date['day'], $date['hour'], $date['minute'])),
-      new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('http://' .
+      new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://' .
                   $_SERVER['HTTP_HOST'] .
                   '/imgs/pmpm-rainy.jpg',
-                  'http://' . $_SERVER['HTTP_HOST'] .
+                  'https://' . $_SERVER['HTTP_HOST'] .
                   '/imgs/pmpm-rainy-pr.jpg'));
   // 他
   } else {
@@ -165,10 +165,10 @@ foreach ($events as $event) {
     replyMultiMessage($bot, $event->getReplyToken(),
       new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($json['description']['text'] . PHP_EOL . PHP_EOL .
       '最終更新：' . sprintf('%s月%s日%s時%s分', $date['month'], $date['day'], $date['hour'], $date['minute'])),
-      new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('http://' .
+      new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('https://' .
                   $_SERVER['HTTP_HOST'] .
                   '/imgs/pmpm-other.jpg',
-                  'http://' . $_SERVER['HTTP_HOST'] .
+                  'https://' . $_SERVER['HTTP_HOST'] .
                   '/imgs/pmpm-other-pr.jpg'));
   }
 }
