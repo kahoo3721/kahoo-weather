@@ -26,9 +26,6 @@ try {
 
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event) {
-  //ユーザーID
-  error_log($event->getUserId());
-  
   // MessageEventクラスのインスタンスでなければ処理をスキップ
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
@@ -161,11 +158,9 @@ foreach ($events as $event) {
     // 天気情報と更新時刻をまとめて返信
     replyTextMessage($bot, $event->getReplyToken(), $json['description']['text'] . PHP_EOL . PHP_EOL .
       '最終更新：' . sprintf('%s月%s日%s時%s分', $date['month'], $date['day'], $date['hour'], $date['minute']));
-        replyMultiMessage($bot, $event->getReplyToken(),
-        new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(2, 507)
-      );
   }
 }
+
 // テキストを返信。引数はLINEBot、返信先、テキスト
 function replyTextMessage($bot, $replyToken, $text) {
   // 返信を行いレスポンスを取得
